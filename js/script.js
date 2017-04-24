@@ -5,6 +5,7 @@ $(document).ready(function() {
     var $masteryGoal = $('#mastery-goal');
     var $masteryStart = $('#mastery-start');
     var $famePerHour = $('#fame-per-hour');
+    var $useLearningPoints = $('#useLearningPoints');
     $fph.keyup(function() {
         this.value = this.value.replace(/[^0-9\.]/g,'');
     });
@@ -37,7 +38,7 @@ $(document).ready(function() {
                 result += combatFameNumbers['l' + i];
                 i++;
             }
-            if ($('#useLearningPoints').is(':checked')) {
+            if ($useLearningPoints.is(':checked')) {
                 result = result * 0.3;
             }
             $('.cf-result').text(((result / $famePerHour.val()).toFixed(0)) + 'h');
@@ -46,10 +47,12 @@ $(document).ready(function() {
             $masteryGoal.val('');
             $masteryStart.val('');
             $famePerHour.val('');
+            $useLearningPoints.prop('checked', false);
         } else {
             $masteryStart.val('');
             $masteryGoal.val('');
             $famePerHour.val('');
+            $useLearningPoints.prop('checked', false);
             $('#calculateCombatFame').popover('show');
             setTimeout(function() {
                 $('#calculateCombatFame').popover('hide');
