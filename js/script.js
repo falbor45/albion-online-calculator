@@ -37,6 +37,9 @@ $(document).ready(function() {
                 result += combatFameNumbers['l' + i];
                 i++;
             }
+            if ($('#useLearningPoints').is(':checked')) {
+                result = result * 0.3;
+            }
             $('.cf-result').text(((result / $famePerHour.val()).toFixed(0)) + 'h');
             $('.pop-up').removeClass('hidden');
             $('.dimmer').removeClass('hidden');
