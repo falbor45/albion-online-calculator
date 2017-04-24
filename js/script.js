@@ -2,6 +2,9 @@ $(document).ready(function() {
     console.log('Ready to go!');
     var $fpht = $('#fpht');
     var $fph = $('#fph');
+    var $masteryGoal = $('#mastery-goal');
+    var $masteryStart = $('#mastery-start');
+    var $famePerHour = $('#fame-per-hour');
     $fph.keyup(function() {
         this.value = this.value.replace(/[^0-9\.]/g,'');
     });
@@ -12,7 +15,7 @@ $(document).ready(function() {
         if ($fph.val() !== '' && $fpht.val() !== '') {
             $('.fph-result').text(($fph.val() / $fpht.val()) * 60);
             $('.fph-fox-calculator').text('That equals to killing ' + (Math.ceil((($fph.val() / $fpht.val()) * 60) / 18)) + ' foxes per hour!');
-            $('.fph-pop-up').removeClass('hidden');
+            $('.pop-up').removeClass('hidden');
             $('.dimmer').removeClass('hidden');
             $fph.val('');
             $fpht.val('');
@@ -26,8 +29,37 @@ $(document).ready(function() {
             return false;
         }
     });
-    $('#close-fph-pop-up').click(function() {
-        $('.fph-pop-up').addClass('hidden');
+
+    $('#calculateCombatFame').click(function() {
+        if($masteryStart.val() !== '' && $masteryGoal.val() !== '' && $famePerHour.val() !== '') {
+            var result = 0;
+            for(i = parseInt($masteryStart.val()) + 1; i <= $masteryGoal.val();) {
+                result += combatFameNumbers['l' + i];
+                i++;
+            }
+            $('.cf-result').text(((result / $famePerHour.val()).toFixed(0)) + 'h');
+            $('.pop-up').removeClass('hidden');
+            $('.dimmer').removeClass('hidden');
+            $masteryGoal.val('');
+            $masteryStart.val('');
+            $famePerHour.val('');
+        } else {
+            $masteryStart.val('');
+            $masteryGoal.val('');
+            $famePerHour.val('');
+            $('#calculateCombatFame').popover('show');
+            setTimeout(function() {
+                $('#calculateCombatFame').popover('hide');
+            }, 1000);
+            return false;
+        }
+    });
+    $('#close-pop-up').click(function() {
+        $('.pop-up').addClass('hidden');
+        $('.dimmer').addClass('hidden');
+    });
+    $('#close-cf-pop-up').click(function() {
+        $('.pop-up').addClass('hidden');
         $('.dimmer').addClass('hidden');
     })
 });
