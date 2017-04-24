@@ -2,6 +2,12 @@ $(document).ready(function() {
     console.log('Ready to go!');
     var $fpht = $('#fpht');
     var $fph = $('#fph');
+    $fph.keyup(function() {
+        this.value = this.value.replace(/[^0-9\.]/g,'');
+    });
+    $fpht.keyup(function() {
+        this.value = this.value.replace(/[^0-9\.]/g,'');
+    });
     $('#calculateFpH').click(function() {
         if ($fph.val() !== '' && $fpht.val() !== '') {
             $('.fph-result').text(($fph.val() / $fpht.val()) * 60);
