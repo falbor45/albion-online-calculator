@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="text-center">Albion Online calculator</h1>
+        <p class="text-center">Calculate how much resources you need, how much time you need to farm until you get specific goal and many, many more!</p>
+    </div>
+    <h2>What do you need calculated?</h2>
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Fame per hour
+            <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            <li><a id="combatFame">Combat fame</a></li>
+            <li><a id="craftingFame">Crafting fame</a></li>
+        </ul>
+    </div>
+        <div class="margin-top"></div>
+        <div class="form-group">
+            <label for="fpht">How many minutes have you been farming?</label>
+            <input class="form-control" id="fpht">
+        </div>
+        <div class="form-group">
+            <label for="fph">How much fame did you earn in that period of time?</label>
+            <input class="form-control" id="fph">
+        </div>
+    <div>
+        <button type="button" class="btn" id="calculateFpH" data-toggle="popover" data-content="Data above is required">Calculate!</button>
+    </div>
+</div>
+<div class="fph-pop-up hidden">
+    <h2 class="fph-result-text text-center">Your fame per hour is:</h2>
+    <h1 class="fph-result text-center"></h1>
+    <h4 class="fph-fox-calculator text-center"></h4>
+    <div class="text-center">
+        <button type="button" class="btn btn-danger" id="close-fph-pop-up">Close window</button>
+    </div>
+    </div>
+<div class="dimmer hidden"></div>
+
+</body>
+</html>
