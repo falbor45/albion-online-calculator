@@ -13,6 +13,12 @@ $(document).ready(function() {
     $fpht.keyup(function() {
         this.value = this.value.replace(/[^0-9\.]/g,'');
     });
+    $masteryGoal.keyup(function() {
+      this.value = this.value.replace(/[^0-9\.]/g,'');
+    });
+    $masteryStart.keyup(function() {
+      this.value = this.value.replace(/[^0-9\.]/g,'');
+    });
     $('#calculateFpH').click(function() {
         if ($fph.val() !== '' && $fpht.val() !== '') {
             $('.fph-result').text(($fph.val() / $fpht.val()) * 60);
