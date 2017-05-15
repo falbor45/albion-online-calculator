@@ -96,8 +96,4 @@ $(document).ready(function() {
         $('.pop-up').addClass('hidden');
         $('.dimmer').addClass('hidden');
     });
-    $('#close-cf-pop-up').click(function() {
-        $('.pop-up').addClass('hidden');
-        $('.dimmer').addClass('hidden');
-    })
 });
