@@ -7,6 +7,7 @@ $(document).ready(function() {
     var $famePerHour = $('#fame-per-hour');
     var $useLearningPoints = $('#useLearningPoints');
     var $useStudy = $('#useStudy');
+    var $famePerNode = $('#fame-per-node');
     [$fph, $fpht, $masteryGoal, $masteryStart].map(function (element) {
       element.keyup(function() {
         this.value = this.value.replace(/[^0-9\.]/g,'');
@@ -80,20 +81,50 @@ $(document).ready(function() {
         $useLearningPoints.prop('checked', false);
         $useStudy.prop('checked', false)
     } else {
-        $masteryStart.val('');
-        $masteryGoal.val('');
-        $famePerHour.val('');
-        $useLearningPoints.prop('checked', false);
-        $useStudy.prop('checked', false);
-        $('#calculateCraftingFame').popover('show');
-        setTimeout(function() {
-          $('#calculateCraftingFame').popover('hide');
-        }, 1000);
-        return false;
+      $masteryStart.val('');
+      $masteryGoal.val('');
+      $famePerHour.val('');
+      $useLearningPoints.prop('checked', false);
+      $useStudy.prop('checked', false);
+      $('#calculateCraftingFame').popover('show');
+      setTimeout(function() {
+        $('#calculateCraftingFame').popover('hide');
+      }, 1000);
+      return false;
+    }
+  });
+
+  $('#calculateGathering').click(function() {
+    if($masteryStart.val() !== '' && $masteryGoal.val() !== '' && $famePerNode.val() !== '') {
+      var result = 0;
+      for(i = parseInt($masteryStart.val() - 2); i <= $masteryGoal.val() - 3;) {
+        result += toolProgressionNumbers[i];
+        i++
       }
-    });
-    $('#close-pop-up').click(function() {
-        $('.pop-up').addClass('hidden');
-        $('.dimmer').addClass('hidden');
-    });
+      if ($useLearningPoints.is(':checked')) {
+        result = result * 0.3
+      }
+      $('.gathering-result').text((result / parseInt($famePerNode.val())).toFixed(0) + " times");
+      $('.pop-up').removeClass('hidden');
+      $('.dimmer').removeClass('hidden');
+      $masteryGoal.val('');
+      $masteryStart.val('');
+      $famePerNode.val('');
+      $useLearningPoints.prop('checked', false);
+    } else {
+      $masteryStart.val('');
+      $masteryGoal.val('');
+      $famePerNode.val('');
+      $useLearningPoints.prop('checked', false);
+      $('#calculateGathering').popover('show');
+      setTimeout(function() {
+        $('#calculateGathering').popover('hide');
+      }, 1000);
+      return false;
+    }
+  });
+  $('#close-pop-up').click(function() {
+    $('.pop-up').addClass('hidden');
+    $('.dimmer').addClass('hidden');
+  });
 });
