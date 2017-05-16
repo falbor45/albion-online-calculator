@@ -113,3 +113,5 @@ var medCraftFameNumbers = minorCraftFameNumbers.map(function(x) {
 var mainCraftFameNumbers = medCraftFameNumbers.map(function(x) {
   return x * 2
 });
+
+var toolProgressionNumbers = [1500, 30000, 140000, 513333, 1000000, 1166667];
