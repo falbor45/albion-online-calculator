@@ -104,7 +104,7 @@ $(document).ready(function() {
       if ($useLearningPoints.is(':checked')) {
         result = result * 0.3
       }
-      $('.gathering-result').text((result / parseInt($famePerNode.val())).toFixed(0) + " times");
+      $('.gathering-result').text(((result / parseInt($famePerNode.val())) * (1 - ($('#gathering-yield').val() / 100))).toFixed(0) + " times");
       $('.pop-up').removeClass('hidden');
       $('.dimmer').removeClass('hidden');
       $masteryGoal.val('');
