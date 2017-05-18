@@ -115,3 +115,36 @@ var mainCraftFameNumbers = medCraftFameNumbers.map(function(x) {
 });
 
 var toolProgressionNumbers = [1500, 30000, 140000, 513333, 1000000, 1166667];
+
+var refineProgressionNumbers = [240, 3713, 45000, 210000, 860000, 2795000];
+
+var refineResources = [
+  {
+    fame: 1,
+    prevReq: 0
+  },
+  {
+    fame: 2,
+    prevReq: 2
+  },
+  {
+    fame: 5,
+    prevReq: 2
+  },
+  {
+    fame: 15,
+    prevReq: 3
+  },
+  {
+    fame: 30,
+    prevReq: 4
+  },
+  {
+    fame: 50,
+    prevReq: 5
+  },
+  {
+    fame: 100,
+    prevReq: 5
+  }
+];
