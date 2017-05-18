@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script
+          src="https://code.jquery.com/jquery-3.2.1.min.js"
+          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+          crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
+  <script type="text/javascript" src="js/data.js"></script>
+</head>
+<body>
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="text-center">Albion Online calculator</h1>
+    <p class="text-center">Calculate how much resources you need, how much time you need to farm until you get specific goal and many, many more!</p>
+  </div>
+  <h2>What do you need calculated?</h2>
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Refining
+      <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="fameperhour.html">Fame per hour</a></li>
+      <li><a href="craftingfame.html">Crafting fame</a></li>
+      <li><a href="combatfame.html">Combat fame</a></li>
+      <li><a href="gathering.html">Gathering</a></li>
+    </ul>
+  </div>
+  <div class="margin-top"></div>
+  <div class="form-group">
+    <label for="mastery-start">What refining tier are you?</label>
+    <input class="form-control" id="mastery-start">
+  </div>
+  <div class="form-group">
+    <label for="mastery-goal">What is your refining tier goal?</label>
+    <input class="form-control" id="mastery-goal">
+  </div>
+  <div class="form-group">
+    <label for="resource-tier">What tier of a resource are you refining?</label>
+    <input class="form-control" id="resource-tier">
+  </div>
+  <div class="form-group">
+    <label for="return-rate">What is your refining return rate?</label>
+    <input class="form-control" id="return-rate">
+  </div>
+  <div class="form-check">
+    <label class="form-check-label margin-bottom">
+      <input id='useLearningPoints' class="form-check-input" type="checkbox" value="">
+      Use LP on each tool tier progression
+    </label>
+  </div>
+  <div>
+    <button type="button" class="btn" id="calculateRefining" data-toggle="popover" data-content="Data above is required">Calculate!</button>
+  </div>
+</div>
+<div class="pop-up hidden">
+  <h2 class="result-text text-center">Approximately, you will need:</h2>
+  <h1 class="refining-result text-center"></h1>
+  <div class="text-center">
+    <button type="button" class="btn btn-danger" id="close-pop-up">Close window</button>
+  </div>
+</div>
+<div class="dimmer hidden"></div>
+
+</body>
+</html>
