@@ -8,6 +8,9 @@ $(document).ready(function() {
     var $useLearningPoints = $('#useLearningPoints');
     var $useStudy = $('#useStudy');
     var $famePerNode = $('#fame-per-node');
+  $currentFame = $('#current-fame');
+  $resourceTier = $('#resource-tier');
+  $returnRate = $('#return-rate');
     [$fph, $fpht, $masteryGoal, $masteryStart].map(function (element) {
       element.keyup(function() {
         this.value = this.value.replace(/[^0-9\.]/g,'');
@@ -124,36 +127,36 @@ $(document).ready(function() {
     }
   });
   $('#calculateRefining').click(function() {
-    if($masteryStart.val() !== '' && $masteryGoal.val() !== '' && $('#current-fame').val() !== '' && $('#resource-tier').val() !== '') {
+    if($masteryStart.val() !== '' && $masteryGoal.val() !== '' && $currentFame.val() !== '' && $resourceTier.val() !== '') {
       var result = 0;
       for(i = parseInt($masteryStart.val()); i < $masteryGoal.val();) {
         result += refineProgressionNumbers[i - 2];
         i++
       }
-      result -= $('#current-fame').val();
-      result /= refineResources[$('#resource-tier').val() - 1].fame;
+      result -= $currentFame.val();
+      result /= refineResources[$resourceTier.val() - 1].fame;
       if ($useLearningPoints.is(':checked')) {
         result = result * 0.3
       }
-      if ($('#return-rate').val() !== '') {
+      if ($returnRate.val() !== '') {
         result = Math.ceil(result * ($('#return-rate').val() / 100))
       }
       $('.refining-result').text(Math.ceil(result.toFixed(0)) + " times");
-      $('.resource-result').text(Math.ceil(result.toFixed(0)) * refineResources[$('#resource-tier').val() - 1].prevReq);
+      $('.resource-result').text(Math.ceil(result.toFixed(0)) * refineResources[$resourceTier.val() - 1].prevReq);
       $('.pop-up').removeClass('hidden');
       $('.dimmer').removeClass('hidden');
       $masteryGoal.val('');
       $masteryStart.val('');
-      $('#current-fame').val('');
-      $('#resource-tier').val('');
-      $('#return-rate').val('');
+      $currentFame.val('');
+      $resourceTier.val('');
+      $returnRate.val('');
       $useLearningPoints.prop('checked', false);
     } else {
       $masteryStart.val('');
       $masteryGoal.val('');
-      $('#current-fame').val('');
-      $('#resource-tier').val('');
-      $('#return-rate').val('');
+      $currentFame.val('');
+      $resourceTier.val('');
+      $returnRate.val('');
       $useLearningPoints.prop('checked', false);
       $('#calculateRefining').popover('show');
       setTimeout(function() {
