@@ -123,6 +123,39 @@ $(document).ready(function() {
       return false;
     }
   });
+  $('#calculateRefining').click(function() {
+    if($masteryStart.val() !== '' && $masteryGoal.val() !== '' && $('#current-fame').val() !== '' && $('#resource-tier').val() !== '') {
+      var result = 0;
+      for(i = parseInt($masteryStart.val()); i < $masteryGoal.val();) {
+        result += refineProgressionNumbers[i - 2];
+        i++
+      }
+      result -= $('#current-fame').val();
+      result /= refineResources[$('#resource-tier').val() - 1].fame;
+      if ($useLearningPoints.is(':checked')) {
+        result = result * 0.3
+      }
+      $('.refining-result').text(Math.ceil(result.toFixed(0)) + " times");
+      $('.pop-up').removeClass('hidden');
+      $('.dimmer').removeClass('hidden');
+      $masteryGoal.val('');
+      $masteryStart.val('');
+      $('#current-fame').val('');
+      $('#resource-tier').val('');
+      $useLearningPoints.prop('checked', false);
+    } else {
+      $masteryStart.val('');
+      $masteryGoal.val('');
+      $('#current-fame').val('');
+      $('#resource-tier').val('');
+      $useLearningPoints.prop('checked', false);
+      $('#calculateRefining').popover('show');
+      setTimeout(function() {
+        $('#calculateRefining').popover('hide');
+      }, 1000);
+      return false;
+    }
+  });
   $('#close-pop-up').click(function() {
     $('.pop-up').addClass('hidden');
     $('.dimmer').addClass('hidden');
