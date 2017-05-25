@@ -19,8 +19,12 @@ $(document).ready(function() {
   });
     $('#calculateFpH').click(function() {
         if ($fph.val() !== '' && $fpht.val() !== '') {
-            $('.fph-result').text(($fph.val() / $fpht.val()) * 60);
-            $('.fph-fox-calculator').text('That equals to killing ' + (Math.ceil((($fph.val() / $fpht.val()) * 60) / 18)) + ' foxes per hour!');
+          var result = ($fph.val() / $fpht.val() * 60);
+          if($('#premium').is(':checked')) {
+            result *= 1.5;
+          }
+            $('.fph-result').text(result);
+            $('.fph-fox-calculator').text('That equals to killing ' + (Math.ceil(result / 18)) + ' foxes per hour!');
             $('.pop-up').removeClass('hidden');
             $('.dimmer').removeClass('hidden');
             $fph.val('');
@@ -46,6 +50,9 @@ $(document).ready(function() {
             if ($useLearningPoints.is(':checked')) {
                 result = result * 0.3;
             }
+          if($('#premium').is(':checked')) {
+            result *= (2/3);
+          }
             $('.cf-result').text(((result / $famePerHour.val()).toFixed(0)) + 'h');
             $('.pop-up').removeClass('hidden');
             $('.dimmer').removeClass('hidden');
@@ -107,6 +114,9 @@ $(document).ready(function() {
       if ($useLearningPoints.is(':checked')) {
         result = result * 0.3
       }
+      if($('#premium').is(':checked')) {
+        result *= (2/3);
+      }
       $('.gathering-result').text(((result / parseInt($famePerNode.val())) * (1 - ($('#gathering-yield').val() / 100))).toFixed(0) + " times");
       $('.pop-up').removeClass('hidden');
       $('.dimmer').removeClass('hidden');
@@ -137,6 +147,9 @@ $(document).ready(function() {
       result /= refineResources[$resourceTier.val() - 1].fame;
       if ($useLearningPoints.is(':checked')) {
         result = result * 0.3
+      }
+      if($('#premium').is(':checked')) {
+        result *= (2/3)
       }
       if ($returnRate.val() !== '') {
         result = Math.ceil(result * ($('#return-rate').val() / 100))
