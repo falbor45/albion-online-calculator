@@ -135,6 +135,9 @@ $(document).ready(function() {
       if ($useLearningPoints.is(':checked')) {
         result = result * 0.3
       }
+      if ($('#return-rate').val() !== '') {
+        result = result * ($('#return-rate').val() / 100)
+      }
       $('.refining-result').text(Math.ceil(result.toFixed(0)) + " times");
       $('.pop-up').removeClass('hidden');
       $('.dimmer').removeClass('hidden');
@@ -142,12 +145,14 @@ $(document).ready(function() {
       $masteryStart.val('');
       $('#current-fame').val('');
       $('#resource-tier').val('');
+      $('#return-rate').val('');
       $useLearningPoints.prop('checked', false);
     } else {
       $masteryStart.val('');
       $masteryGoal.val('');
       $('#current-fame').val('');
       $('#resource-tier').val('');
+      $('#return-rate').val('')
       $useLearningPoints.prop('checked', false);
       $('#calculateRefining').popover('show');
       setTimeout(function() {
