@@ -120,12 +120,12 @@ var refineProgressionNumbers = [240, 3713, 45000, 210000, 860000, 2795000];
 
 var refineResources = [
   {
-    fame: 1,
+    fame: 0,
     prevReq: 0
   },
   {
-    fame: 2,
-    prevReq: 2
+    fame: 1,
+    prevReq: 0
   },
   {
     fame: 5,
@@ -133,18 +133,22 @@ var refineResources = [
   },
   {
     fame: 15,
+    prevReq: 2
+  },
+  {
+    fame: 60,
     prevReq: 3
   },
   {
-    fame: 30,
+    fame: 180,
     prevReq: 4
   },
   {
-    fame: 50,
+    fame: 430,
     prevReq: 5
   },
   {
-    fame: 100,
+    fame: 930,
     prevReq: 5
   }
 ];
