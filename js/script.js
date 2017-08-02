@@ -8,6 +8,14 @@ $(document).ready(function() {
     var $useLearningPoints = $('#useLearningPoints');
     var $useStudy = $('#useStudy');
     var $famePerNode = $('#fame-per-node');
+    var clearInputs = function () {
+      var elements = document.getElementsByTagName("input");
+      for (var i=0; i < elements.length; i++) {
+        if (elements[i].type === "text") {
+          elements[i].value = "";
+        }
+      }
+    }
   $currentFame = $('#current-fame');
   $resourceTier = $('#resource-tier');
   $returnRate = $('#return-rate');
@@ -27,11 +35,9 @@ $(document).ready(function() {
             $('.fph-fox-calculator').text('That equals to killing ' + (Math.ceil(result / 18)) + ' foxes per hour!');
             $('.pop-up').removeClass('hidden');
             $('.dimmer').removeClass('hidden');
-            $fph.val('');
-            $fpht.val('');
+            clearInputs();
         } else {
-            $fph.val('');
-            $fpht.val('');
+            clearInputs();
             $('#calculateFpH').popover('show');
             setTimeout(function() {
                 $('#calculateFpH').popover('hide');
@@ -56,14 +62,10 @@ $(document).ready(function() {
             $('.cf-result').text(((result / $famePerHour.val()).toFixed(0)) + 'h');
             $('.pop-up').removeClass('hidden');
             $('.dimmer').removeClass('hidden');
-            $masteryGoal.val('');
-            $masteryStart.val('');
-            $famePerHour.val('');
+            clearInputs();
             $useLearningPoints.prop('checked', false);
         } else {
-            $masteryStart.val('');
-            $masteryGoal.val('');
-            $famePerHour.val('');
+            clearInputs();
             $useLearningPoints.prop('checked', false);
             $('#calculateCombatFame').popover('show');
             setTimeout(function() {
@@ -86,14 +88,11 @@ $(document).ready(function() {
         $('.crafting-fame-result').text(result.toFixed(2) + " fame");
         $('.pop-up').removeClass('hidden');
         $('.dimmer').removeClass('hidden');
-        $masteryGoal.val('');
-        $masteryStart.val('');
+        clearInputs();
         $useLearningPoints.prop('checked', false);
         $useStudy.prop('checked', false)
     } else {
-      $masteryStart.val('');
-      $masteryGoal.val('');
-      $famePerHour.val('');
+      clearInputs();
       $useLearningPoints.prop('checked', false);
       $useStudy.prop('checked', false);
       $('#calculateCraftingFame').popover('show');
@@ -120,14 +119,10 @@ $(document).ready(function() {
       $('.gathering-result').text(((result / parseInt($famePerNode.val())) * (1 - ($('#gathering-yield').val() / 100))).toFixed(0) + " times");
       $('.pop-up').removeClass('hidden');
       $('.dimmer').removeClass('hidden');
-      $masteryGoal.val('');
-      $masteryStart.val('');
-      $famePerNode.val('');
+      clearInputs();
       $useLearningPoints.prop('checked', false);
     } else {
-      $masteryStart.val('');
-      $masteryGoal.val('');
-      $famePerNode.val('');
+      clearInputs();
       $useLearningPoints.prop('checked', false);
       $('#calculateGathering').popover('show');
       setTimeout(function() {
@@ -158,18 +153,10 @@ $(document).ready(function() {
       $('.resource-result').text(Math.ceil(result.toFixed(0)) * refineResources[$resourceTier.val() - 1].prevReq);
       $('.pop-up').removeClass('hidden');
       $('.dimmer').removeClass('hidden');
-      $masteryGoal.val('');
-      $masteryStart.val('');
-      $currentFame.val('');
-      $resourceTier.val('');
-      $returnRate.val('');
+      clearInputs();
       $useLearningPoints.prop('checked', false);
     } else {
-      $masteryStart.val('');
-      $masteryGoal.val('');
-      $currentFame.val('');
-      $resourceTier.val('');
-      $returnRate.val('');
+      clearInputs();
       $useLearningPoints.prop('checked', false);
       $('#calculateRefining').popover('show');
       setTimeout(function() {
